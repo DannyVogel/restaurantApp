@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
+
+body {
+    margin: 0 auto;
+    width: 600px;
+    border: 1.334vh solid #111;
+    border-radius: 4.5vh;
+    min-height: 100vh;
+    height: 100%;
+    font-family: 'Smythe', cursive;
+} 
+
+header {
+    width: auto;
+    height: 175px;
+    border: 1px solid black;
+    background-image: url('./images/header.jpg');
+    border-radius: 25px 25px 0 0;
+    z-index: -1;
+    margin-bottom: 45px;
+    box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding-left: 45px;
+    height: 100%;
+}
+
+.header-text > h1, h3 {
+    margin: 0;
+    color: white;
+    text-shadow: 2px 0px 2px rgba(0,0,0,0.6);
+}
+
+.food-item-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    height: auto;
+    margin: 0 45px 20px 45px;
+    padding: 10px;
+    border-bottom: 1px solid #D2D2D2;
+}
+
+.food-item-image {
+    font-size: 78px;
+    margin: 0;
+}
+
+.food-details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+}
+
+.food-details-container > p {
+    margin: 0;
+}
+
+.food-name, 
+.food-price,
+.checkout-header,
+.checkout-item-name,
+.total,
+.total-price,
+.dollar {
+    font-weight: bold;
+    margin: 0;
+}
+
+.food-name, 
+.checkout-header,
+.checkout-item-name,
+.total {
+    font-size: 28px;
+}
+
+.food-price,
+.total-price,
+.dollar {
+    font-size: 20px;
+}
+
+.add-item-btn {
+    margin-left: auto;
+    width: 50px;
+    padding: 5px;
+    border: 1.5px solid #DEDEDE;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.checkout {
+    visibility: hidden;
+    margin: 0 45px 20px 45px;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-header {
+    align-self: center;
+    margin: 0 0 20px 0;
+}
+
+.checkout-total {
+    border-top: 2px solid #393333;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    padding-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total {
+    margin-right: auto;
+}
+
+.checkout-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.remove-item-btn {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    border: none;
+    color: #BBBBBB;
+    background: none;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.checkoutBtn {
+    width: 100%;
+    height: 60px;
+    background: #16DB99;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
