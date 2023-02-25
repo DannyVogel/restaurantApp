@@ -1,6 +1,8 @@
 import { menuArray } from "./data.js";
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
+const checkoutContainerEl = document.querySelector(".checkout")
+const paymenteInfoContainerEl = document.querySelector(".payment-info-container")
 let checkoutItems = []
 
 renderMenu(menuArray)
@@ -15,7 +17,7 @@ function renderMenu(menu){
                         <p class="food-ingredients">${item.ingredients}</p>
                         <p class="food-price">$${item.price}</p>
                     </div>
-                    <button class="add-item-btn" id="${item.id}">+</button>
+                    <button class="add-item-btn" id="add-item-btn" data-id="${item.id}">+</button>
                 </div>`
 
     document.getElementById("menu").innerHTML += foodItem
@@ -23,17 +25,9 @@ function renderMenu(menu){
 }
 
 document.addEventListener("click", (event) => {
-    if (event.target.id == "remove-item-btn"){
-        let id = event.target.dataset.removeItem
-        document.getElementById(`checkout-item${id}`).remove()
-        
-        checkoutItems = checkoutItems.filter(item => item.checkoutId != id)
-        renderCheckoutItems()
-        calculateCheckoutTotal()
-
-    } else if (event.target.id){
+    if (event.target.id == "add-item-btn"){
         menuArray.forEach(item => {
-                if(item.id == event.target.id){
+                if(item.id == event.target.dataset.id){
                     const checkoutItem = {...item, checkoutId:uuidv4()}
                     checkoutItems.push(checkoutItem)
 
@@ -42,10 +36,33 @@ document.addEventListener("click", (event) => {
                 }
         })    
     }
+
+    if (event.target.id == "remove-item-btn"){
+        let id = event.target.dataset.removeItem
+        document.getElementById(`checkout-item${id}`).remove()
+        
+        checkoutItems = checkoutItems.filter(item => item.checkoutId != id)
+        renderCheckoutItems()
+        calculateCheckoutTotal()
+    }
+
+    if (event.target.id == "checkout-btn") {
+        paymenteInfoContainerEl.style.visibility = 'visible'
+    } 
+    
+    if(event.target.id == "close-btn"){
+        paymenteInfoContainerEl.style.visibility = 'hidden'
+    }
+
+    if(event.target.id == "pay-btn"){
+        paymenteInfoContainerEl.style.visibility = 'hidden'
+        checkoutContainerEl.style.visibility = 'hidden'
+        document.getElementById('order-complete-container').style.visibility = 'visible'
+        renderReceipt()
+    }
 })
 
 function renderCheckoutItems() {
-    const checkoutContainerEl = document.querySelector(".checkout")
     checkoutContainerEl.style.visibility = checkoutItems.length > 0 ? 'visible' : 'hidden'
 
     const checkoutItemContainerEl = document.querySelector(".checkout-item-container")
@@ -71,4 +88,8 @@ function calculateCheckoutTotal(){
     })
 
     document.querySelector(".total-price").innerHTML = `$${totalPrice}`
+}
+
+function renderReceipt() {
+    // formdata stuff
 }
