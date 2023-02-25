@@ -1,4 +1,7 @@
 import { menuArray } from "./data.js";
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+
+let checkoutItems = []
 
 renderMenu(menuArray)
 
@@ -13,9 +16,8 @@ function renderMenu(menu){
                         <p class="food-price">$${item.price}</p>
                     </div>
                     <button class="add-item-btn" id="${item.id}">+</button>
-                </div>
-        `
-    
+                </div>`
+
     document.getElementById("menu").innerHTML += foodItem
     })
 }
@@ -25,34 +27,48 @@ document.addEventListener("click", (event) => {
         let id = event.target.dataset.removeItem
         document.getElementById(`checkout-item${id}`).remove()
         
-        const totalPrice = document.querySelector(".total-price")
-        totalPrice.innerHTML = Number(totalPrice.innerHTML) - menuArray[id].price
+        checkoutItems = checkoutItems.filter(item => item.checkoutId != id)
+        renderCheckoutItems()
+        calculateCheckoutTotal()
 
     } else if (event.target.id){
         menuArray.forEach(item => {
                 if(item.id == event.target.id){
-                    renderCheckout(item.name, item.price, item.id)
+                    const checkoutItem = {...item, checkoutId:uuidv4()}
+                    checkoutItems.push(checkoutItem)
+
+                    renderCheckoutItems(checkoutItems)
+                    calculateCheckoutTotal()
                 }
         })    
     }
 })
 
-function renderCheckout(name, price, id) {
-    document.querySelector(".checkout").style.visibility = 'visible'
+function renderCheckoutItems() {
+    const checkoutContainerEl = document.querySelector(".checkout")
+    checkoutContainerEl.style.visibility = checkoutItems.length > 0 ? 'visible' : 'hidden'
 
-    const checkoutItem = `
-        <div class="checkout-item" id="checkout-item${id}">
-            <p class="food-name">${name}</p>
-            <button class="remove-item-btn" id="remove-item-btn" data-remove-item="${id}">remove</button>
-            <p class="food-price">$${price}</p>
-        </div>`
+    const checkoutItemContainerEl = document.querySelector(".checkout-item-container")
+    checkoutItemContainerEl.innerHTML = ''
 
-    document.querySelector(".checkout-item-container").innerHTML += checkoutItem
+    checkoutItems.forEach(item => {
+        const checkoutItem = `
+            <div class="checkout-item" id="checkout-item${item.checkoutId}">
+                <p class="food-name">${item.name}</p>
+                <button class="remove-item-btn" id="remove-item-btn" data-remove-item="${item.checkoutId}">remove</button>
+                <p class="food-price">$${item.price}</p>
+            </div>`
     
-    const totalPrice = document.querySelector(".total-price")
-    if(!totalPrice.innerHTML){
-        totalPrice.innerHTML += `${price}`
-    } else {
-        totalPrice.innerHTML = Number(totalPrice.innerHTML) + price
-    }
+            checkoutItemContainerEl.innerHTML += checkoutItem
+    })
+}
+
+function calculateCheckoutTotal(){
+    let totalPrice = 0
+
+    checkoutItems.forEach(item => {
+        totalPrice += item.price
+    })
+
+    document.querySelector(".total-price").innerHTML = `$${totalPrice}`
 }
