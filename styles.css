@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
 
+html {
+    background-color: #757575;
+}
+
 body {
     margin: 0 auto;
     width: 600px;
@@ -8,6 +12,7 @@ body {
     min-height: 100vh;
     height: 100%;
     font-family: 'Smythe', cursive;
+    background-color: white;
 } 
 
 main {
@@ -22,9 +27,9 @@ header {
     border-radius: 25px 25px 0 0;
     z-index: -1;
     margin-bottom: 45px;
-    box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.75);
 }
 
 .header-text {
@@ -74,22 +79,11 @@ header {
 .checkout-item-name,
 .total,
 .total-price,
-.dollar {
+.food-price,
+.total-price {
     font-weight: bold;
     margin: 0;
-}
-
-.food-name, 
-.checkout-header,
-.checkout-item-name,
-.total {
     font-size: 28px;
-}
-
-.food-price,
-.total-price,
-.dollar {
-    font-size: 20px;
 }
 
 .add-item-btn {
@@ -139,6 +133,7 @@ header {
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
+    width: 100%;
 }
 
 .remove-item-btn {
@@ -150,6 +145,7 @@ header {
     background: none;
     margin-right: auto;
     cursor: pointer;
+    padding-top: 5px;
 }
 
 .checkout-btn {
@@ -238,16 +234,37 @@ input {
 .order-complete-container {
     visibility: hidden;
     position: absolute;
-    top: 0;
+    top: 400px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 510px;
-    height: 100%;
+    height: 120px;
     margin: auto;
     background: #ECFDF5;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.order-complete-container > h1 {
+    margin: 20px 0 20px 0;
+}
+
+.reset-btn {
+    width: 100%;
+    height: 60px;
+    background: #16DB99;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+
 }

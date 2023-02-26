@@ -37,15 +37,16 @@
             <button class="close-btn" id="close-btn">X</button>
             <h1>Enter payment details</h1>
             <form id="payment-details">
-                <input type="text" placeholder="Enter your name">
-                <input id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="Enter card number">
-                <input type="tel" inputmode="numeric" pattern="[0-9\s]" maxlength="3" placeholder="Enter CVV" id="cvv">
-                <button class="pay-btn" id="pay-btn">Pay</button>
+                <input name="userName" type="text" placeholder="Enter your name" required />
+                <input name="userCCNum" id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="Enter card number" required />
+                <input name="userCvv" type="tel" inputmode="numeric" pattern="[0-9\s]{3}" maxlength="3" placeholder="Enter CVV" id="cvv" required />
+                <button type="submit" class="pay-btn" id="pay-btn">Pay</button>
             </form>
         </div>
 
         <div class="order-complete-container" id="order-complete-container">
-            <h1 class="order-complete" id="order-complete">hi</h1>
+            <h1 class="order-complete" id="order-complete"></h1>
+            <button class="reset-btn" id="reset-btn">Order again</button>
         </div>
     </main>
 </body>

@@ -15,7 +15,7 @@ function renderMenu(menu){
                     <div class="food-details-container">
                         <p class="food-name">${item.name}</p>
                         <p class="food-ingredients">${item.ingredients}</p>
-                        <p class="food-price">$${item.price}</p>
+                        <p class="food-price">$ ${item.price}</p>
                     </div>
                     <button class="add-item-btn" id="add-item-btn" data-id="${item.id}">+</button>
                 </div>`
@@ -60,6 +60,10 @@ document.addEventListener("click", (event) => {
         document.getElementById('order-complete-container').style.visibility = 'visible'
         renderReceipt()
     }
+
+    if(event.target.id == "reset-btn"){
+        location.reload()
+    }
 })
 
 function renderCheckoutItems() {
@@ -73,7 +77,7 @@ function renderCheckoutItems() {
             <div class="checkout-item" id="checkout-item${item.checkoutId}">
                 <p class="food-name">${item.name}</p>
                 <button class="remove-item-btn" id="remove-item-btn" data-remove-item="${item.checkoutId}">remove</button>
-                <p class="food-price">$${item.price}</p>
+                <p class="food-price">$ ${item.price}</p>
             </div>`
     
             checkoutItemContainerEl.innerHTML += checkoutItem
@@ -87,9 +91,19 @@ function calculateCheckoutTotal(){
         totalPrice += item.price
     })
 
-    document.querySelector(".total-price").innerHTML = `$${totalPrice}`
+    document.querySelector(".total-price").innerHTML = `$ ${totalPrice}`
 }
 
-function renderReceipt() {
-    // formdata stuff
+const paymentDetails = document.getElementById('payment-details')
+paymentDetails.addEventListener('submit', (e) => {
+    e.preventDefault()
+    
+    const paymentData = new FormData(paymentDetails)
+    renderReceipt(paymentData)
+})
+
+function renderReceipt(data) {
+    const name = data.get('userName')
+    
+    document.getElementById('order-complete').textContent = `Thanks, ${name}! Your order is on its way.`
 }
