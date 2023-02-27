@@ -267,7 +267,12 @@ input {
     font-size: 20px;
     cursor: pointer;
     padding: 0;
+}
 
+.version {
+    width: 95%;
+    margin: 5px auto;
+    text-align: right;
 }
 
 @media screen and (max-width: 530px) {
