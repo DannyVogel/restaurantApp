@@ -54,18 +54,22 @@ function clickHandlers(event){
 
     if (event.target.id == "checkout-btn") {
         paymenteInfoContainerEl.style.visibility = 'visible'
+        paymenteInfoContainerEl.style.display = 'flex'
+
         document.getElementById('menu').style.visibility = 'hidden'
         checkoutBtn.disabled = true;
     } 
     
     if(event.target.id == "close-btn"){
         paymenteInfoContainerEl.style.visibility = 'hidden'
+        paymenteInfoContainerEl.style.display = 'none'
         document.getElementById('menu').style.visibility = 'visible'
         checkoutBtn.disabled = false;
     }
 
     if(event.target.id == "pay-btn"){
         paymenteInfoContainerEl.style.visibility = 'hidden'
+        paymenteInfoContainerEl.style.display = 'none'
         checkoutContainerEl.style.visibility = 'hidden'
         document.getElementById('order-complete-container').style.visibility = 'visible'
     }
