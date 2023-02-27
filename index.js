@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
 const checkoutContainerEl = document.querySelector(".checkout")
 const paymenteInfoContainerEl = document.querySelector(".payment-info-container")
+const checkoutBtn = document.getElementById("checkout-btn")
+
 let checkoutItems = []
 
 renderMenu(menuArray)
@@ -52,10 +54,14 @@ function clickHandlers(event){
 
     if (event.target.id == "checkout-btn") {
         paymenteInfoContainerEl.style.visibility = 'visible'
+        document.getElementById('menu').style.visibility = 'hidden'
+        checkoutBtn.disabled = true;
     } 
     
     if(event.target.id == "close-btn"){
         paymenteInfoContainerEl.style.visibility = 'hidden'
+        document.getElementById('menu').style.visibility = 'visible'
+        checkoutBtn.disabled = false;
     }
 
     if(event.target.id == "pay-btn"){
