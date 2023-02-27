@@ -270,7 +270,7 @@ input {
 
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 530px) {
     .food-item-container {
         flex-wrap: wrap;
         justify-content: space-around;
@@ -279,8 +279,12 @@ input {
         padding: 0;
     }
 
+    .food-item-image {
+        width: 45%;
+    }
+
     .food-details-container {
-        flex-wrap: wrap;
+        width: 45%;
         gap: 2px;
     }
 
