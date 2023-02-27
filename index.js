@@ -24,7 +24,11 @@ function renderMenu(menu){
     })
 }
 
-document.addEventListener("click", (event) => {
+document.addEventListener("click", clickHandlers)
+document.addEventListener("touchstart", clickHandlers)
+
+
+function clickHandlers(event){
     if (event.target.id == "add-item-btn"){
         menuArray.forEach(item => {
                 if(item.id == event.target.dataset.id){
@@ -64,7 +68,7 @@ document.addEventListener("click", (event) => {
     if(event.target.id == "reset-btn"){
         location.reload()
     }
-})
+}
 
 function renderCheckoutItems() {
     checkoutContainerEl.style.visibility = checkoutItems.length > 0 ? 'visible' : 'hidden'
