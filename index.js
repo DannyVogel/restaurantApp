@@ -68,7 +68,6 @@ function clickHandlers(event){
         paymenteInfoContainerEl.style.visibility = 'hidden'
         checkoutContainerEl.style.visibility = 'hidden'
         document.getElementById('order-complete-container').style.visibility = 'visible'
-        renderReceipt()
     }
 
     if(event.target.id == "reset-btn"){
