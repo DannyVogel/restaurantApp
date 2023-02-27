@@ -6,7 +6,7 @@ html {
 
 body {
     margin: 0 auto;
-    width: 600px;
+    max-width: 600px;
     border: 1.334vh solid #111;
     border-radius: 4.5vh;
     min-height: 100vh;
@@ -17,6 +17,7 @@ body {
 
 main {
     position: relative;
+    width: 100%;
 }
 
 header {
@@ -164,7 +165,7 @@ header {
 .payment-info-container {
     visibility: hidden;
     position: absolute;
-    width: 500px;
+    width: 90%;
     height: 450px;
     right: 0;
     left: 0;
@@ -238,7 +239,7 @@ input {
     bottom: 0;
     left: 0;
     right: 0;
-    width: 510px;
+    width: 90%;
     height: 120px;
     margin: auto;
     background: #ECFDF5;
@@ -268,3 +269,25 @@ input {
     padding: 0;
 
 }
+
+@media screen and (max-width: 500px) {
+    .food-item-container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        height: auto;
+        margin: 0 20px 20px 20px;
+        padding: 0;
+    }
+
+    .food-details-container {
+        flex-wrap: wrap;
+        gap: 2px;
+    }
+
+    .add-item-btn {
+        width: 100%;
+        padding: 0px;
+        border-radius: 2px;
+        margin-bottom: 20px;
+    }
+  }
